@@ -45,6 +45,9 @@ message("VeniVidiMove Version ${CPACK_PACKAGE_VERSION_MAJOR}.${CPACK_PACKAGE_VER
 install(TARGETS VeniVidiMove
         RUNTIME DESTINATION bin
         ARCHIVE DESTINATION bin)
+include(InstallRequiredSystemLibraries)
+install(PROGRAMS ${CMAKE_INSTALL_SYSTEM_RUNTIME_LIBS}
+        DESTINATION bin COMPONENT runtime)
 
 # OS SPECIFIC INSTALL SETTINGS
 if(WIN32)
