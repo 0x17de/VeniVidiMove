@@ -35,6 +35,11 @@ void MainWindow::keyPressEvent(QKeyEvent* event) {
                 if (results.count() != 1)
                     throw std::runtime_error("Exactly one item must be selected");
                 QString path = results[0];
+                if (path == g.entries[g.index]) {
+                    ++g.index;
+                    displayImage();
+                    return;
+                }
 
                 if (QFile::exists(path) && !QFile::remove(path))
                     throw std::runtime_error("Could not overwrite file");
